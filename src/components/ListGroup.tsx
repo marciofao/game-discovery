@@ -1,11 +1,14 @@
 import { useState } from "react";
-import { Fragment } from "react/jsx-runtime";
 
-function ListGroup() {
-    let items = ["item1", "item2", "item3", "item4", "item5"];
+// { items:  [], heading : string  }
+interface Props {
+    items: string[];
+    heading?: string;
+}
 
-    const [selectedItem, setSelectedItem] = useState(-1);
+function ListGroup({ items, heading }: Props) {
     
+    const [selectedItem, setSelectedItem] = useState(-1);
 
     const getMessage = () => {
         return items.length === 0 && <p>There are no items</p>;
@@ -13,7 +16,7 @@ function ListGroup() {
 
     return (
         <>
-            <h1>List</h1>
+            <h1>{heading}</h1>
             {getMessage()}
             <ul className="list-group">
                 {items.map((item, index) => (
